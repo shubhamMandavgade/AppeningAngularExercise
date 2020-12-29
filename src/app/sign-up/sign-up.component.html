@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 mx-auto">
+            <div id="first">
+                <div class="myform form ">
+                    <div class="logo mb-3">
+                        <div class="col-md-12 text-center">
+                            <h1>Sign Up</h1>
+                        </div>
+                    </div>
+                    <form class="form" #registerForm="ngForm" [appMatchPassword]="['password', 'confirmPassword']"
+                        (ngSubmit)="registerForm.form.valid && onSubmit(registerForm)" novalidate>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control" [(ngModel)]="userModal.username" name="username"
+                                #username="ngModel" appValidateUserName required>
+                            <span class="text-danger"
+                                *ngIf="(username.touched || registerForm.submitted) && username.errors?.required">
+                                User Name is required
+                            </span>
+                            <span class="text-danger" *ngIf="username.touched && username.errors?.userNameNotAvailable">
+                                User Name not available
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control" [(ngModel)]="userModal.password" name="password"
+                                #password="ngModel" appPasswordPattern required>
+                            <span class="text-danger"
+                                *ngIf="(password.touched || registerForm.submitted) && password.errors?.required">
+                                Password is required
+                            </span>
+                            <span class="text-danger" *ngIf="password.touched && password.errors?.invalidPassword">
+                                Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
+                                letter and 1 number
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" class="form-control" [(ngModel)]="userModal.confirmPassword"
+                                name="confirmPassword" #confirmPassword="ngModel" required>
+                            <span class="text-danger"
+                                *ngIf="(confirmPassword.touched || registerForm.submitted) && confirmPassword.errors?.required">
+                                Confirm Password is required
+                            </span>
+                            <span class="text-danger"
+                                *ngIf="confirmPassword.touched && confirmPassword.errors?.passwordMismatch">
+                                Passwords doesnot match
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <p class="text-center">By signing up you accept our <a>Terms Of Use</a></p>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block mybtn btn-primary tx-tfm">Register</button>
+                        </div>
+                        <div class="col-md-12 ">
+                            <div class="login-or">
+                                <hr class="hr-or">
+                                <span class="span-or">or</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p class="text-center">Already have an account? <a routerLink="/sign-in" id="signup">Sign In</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

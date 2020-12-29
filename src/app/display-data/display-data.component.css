@@ -1,0 +1,32 @@
+.postBack{
+    height:100%;
+    display: flex;
+    align-items: center;
+    -moz-box-shadow: 0 0 5px #999;
+    -webkit-box-shadow: 0 0 5px #999;
+    box-shadow: 0 0 5px #999;
+}
+
+.page{
+    margin-top: 20px;
+    text-align: center;
+}
+
+h3{
+    font-size: 17px;
+    color:#3c8dbc;
+    margin-top: 15px;
+}
+.post{
+    color: #3c8dbc;
+}
+p{
+    font-size: 17px;
+    color: black;
+}
+hr{
+    border-color: lightgray;
+}
+
+
+

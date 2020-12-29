@@ -1,0 +1,16 @@
+<div class="container">
+    <ng-container *ngIf="( data | filter : filterTerm) as result">
+        <div class="row h-100 postBack mt-2"
+            *ngFor="let posts of result | filter:filterTerm | paginate:{itemsPerPage: 5, currentPage:p}">
+            <div class="col-sm-12">
+                <h3>{{posts.id}}-{{posts.title}}</h3>
+                <hr>
+                <p>{{posts.body}}</p>
+            </div>
+        </div>
+        <p *ngIf="result.length === 0" class="col-md-12 alert alert-warning mt-4">Looks like we couldn't find any matches.</p>
+    </ng-container>
+</div>
+<div class="page">
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+</div>
