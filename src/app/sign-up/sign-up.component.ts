@@ -23,11 +23,15 @@ export class SignUpComponent implements OnInit {
       this.localS_Username = localStorage.getItem('username')
       if (form.value.username == this.localS_Username) {
         alert("User already exists, please login.")
-      }else{
+      } else{
         localStorage.setItem('username', form.value.username);
         localStorage.setItem('password', form.value.password);
         this.router.navigate(['/sign-in']);
       }
-    } 
+    }else {
+      localStorage.setItem('username', form.value.username);
+      localStorage.setItem('password', form.value.password);
+      this.router.navigate(['/sign-in']);
+    }
   }
 }
